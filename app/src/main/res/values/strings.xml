@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LocalMarket</string>
+
+    <string name="default_web_client_id">
+        79100745435-ciqu8f2334mcekulthi6gmi2signiqmv.apps.googleusercontent.com
+    </string>
+
+</resources>
