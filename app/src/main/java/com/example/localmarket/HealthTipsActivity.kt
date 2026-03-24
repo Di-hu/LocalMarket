@@ -30,7 +30,7 @@ class HealthTipsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var tts: TextToSpeech
 
-    private val API_KEY = "AIzxxxxxxxxxxxxxxxx"
+   private val API_KEY = BuildConfig.API_KEY
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
