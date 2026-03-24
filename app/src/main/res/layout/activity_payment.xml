@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_3">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title -->
+
+        <TextView
+            android:text="Complete Your Payment"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Appointment Details -->
+
+        <TextView
+            android:id="@+id/appointmentInfo"
+            android:text="Appointment Info"
+            android:textSize="18sp"
+            android:textColor="#A0F7F3"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Google Pay -->
+
+        <LinearLayout
+            android:id="@+id/gpayLayout"
+            android:orientation="horizontal"
+            android:background="@drawable/payment_card"
+            android:padding="16dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/img_19"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:text="Google Pay"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <!-- Paytm -->
+
+        <LinearLayout
+            android:id="@+id/paytmLayout"
+            android:orientation="horizontal"
+            android:background="@drawable/payment_card"
+            android:padding="16dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/img_20"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:text="Paytm"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <!-- PhonePe -->
+
+        <LinearLayout
+            android:id="@+id/phonepeLayout"
+            android:orientation="horizontal"
+            android:background="@drawable/payment_card"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/img_21"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:text="PhonePe"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="12dp"
+    android:padding="16dp"
+    android:background="#1E1E1E"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Medicine Name -->
+    <TextView
+        android:id="@+id/medName"
+        android:text="Paracetamol"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Medicine Price -->
+    <TextView
+        android:id="@+id/medPrice"
+        android:text="₹20"
+        android:textSize="16sp"
+        android:textColor="#4CAF50"
+        android:layout_marginTop="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Medicine Description -->
+    <TextView
+        android:id="@+id/medDesc"
+        android:text="Fever and pain relief tablet"
+        android:textSize="14sp"
+        android:textColor="#CCCCCC"
+        android:layout_marginTop="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

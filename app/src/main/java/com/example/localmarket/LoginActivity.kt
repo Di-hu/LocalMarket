@@ -2,6 +2,7 @@ package com.example.localmarket
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -30,10 +31,34 @@ class LoginActivity : AppCompatActivity() {
         val googleBtn = findViewById<LinearLayout>(R.id.googleBtn)
         val signupText = findViewById<TextView>(R.id.signupText)
         val loadingBar = findViewById<ProgressBar>(R.id.loadingBar)
+        val togglePassword = findViewById<ImageView>(R.id.togglePassword)
 
-        // =========================
-        // Email Login
-        // =========================
+        // 🔥 PASSWORD TOGGLE LOGIC
+        togglePassword.setOnClickListener {
+
+            if (passwordEt.inputType ==
+                (InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
+            ) {
+
+                passwordEt.inputType =
+                    InputType.TYPE_CLASS_TEXT or
+                            InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+
+                togglePassword.setImageResource(R.drawable.ic_eye_off)
+
+            } else {
+
+                passwordEt.inputType =
+                    InputType.TYPE_CLASS_TEXT or
+                            InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+                togglePassword.setImageResource(R.drawable.ic_eye)
+            }
+
+            passwordEt.setSelection(passwordEt.text.length)
+        }
+
+        // 🔐 EMAIL LOGIN
         loginBtn.setOnClickListener {
 
             val email = emailEt.text.toString().trim()
@@ -67,9 +92,7 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
-        // =========================
-        // Google Setup
-        // =========================
+        // 🔵 GOOGLE SIGN-IN SETUP
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -79,25 +102,19 @@ class LoginActivity : AppCompatActivity() {
 
         googleBtn.setOnClickListener {
 
-            // Always show account chooser
             googleClient.signOut().addOnCompleteListener {
-
                 val signInIntent = googleClient.signInIntent
                 startActivityForResult(signInIntent, RC_SIGN_IN)
             }
         }
 
-        // =========================
-        // Go to Signup
-        // =========================
+        // 📝 SIGNUP CLICK
         signupText.setOnClickListener {
             startActivity(Intent(this, Signup::class.java))
         }
     }
 
-    // =========================
-    // Google Result
-    // =========================
+    // 🔵 GOOGLE RESULT HANDLER
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -107,7 +124,8 @@ class LoginActivity : AppCompatActivity() {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                 val account = task.getResult(ApiException::class.java)
 
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                val credential =
+                    GoogleAuthProvider.getCredential(account.idToken, null)
 
                 auth.signInWithCredential(credential)
                     .addOnCompleteListener { authTask ->
@@ -133,9 +151,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // =========================
-    // Open Dashboard
-    // =========================
     private fun goToDashboard() {
         startActivity(Intent(this, DashBoardActivity::class.java))
         finish()

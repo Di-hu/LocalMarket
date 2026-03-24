@@ -1,0 +1,91 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="14dp"
+    android:background="@drawable/doctor_card_bg"
+
+    card_view:cardCornerRadius="18dp"
+    card_view:cardElevation="10dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/doctorImage"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="12dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tvName"
+                android:text="Dr. Amit Sharma"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tvSpecialization"
+                android:text="Cardiologist"
+                android:textColor="#A0F7F3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tvLocation"
+                android:text="City Hospital"
+                android:textColor="#9BEFE9"/>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/ratingBar"
+                android:numStars="4"
+                android:stepSize="0.5"
+                android:layout_marginTop="4dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerTime"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tvPhone"
+                android:text="📞 Call Doctor"
+                android:textColor="#1AFFE1"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"/>
+
+            <Button
+                android:id="@+id/btnBook"
+                android:text="Book Appointment"
+                android:textColor="#000000"
+                android:background="@drawable/btn_glow"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -3,6 +3,7 @@ package com.example.localmarket
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -11,6 +12,7 @@ class Signup : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private var passwordVisible = false
+    private var confirmPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,28 +26,51 @@ class Signup : AppCompatActivity() {
         val signupBtn = findViewById<Button>(R.id.signupBtn)
         val loginText = findViewById<TextView>(R.id.loginText)
         val togglePassword = findViewById<ImageView>(R.id.togglePassword)
+        val toggleConfirmPassword = findViewById<ImageView>(R.id.toggleConfirmPassword)
+        val loadingBar = findViewById<ProgressBar>(R.id.loadingBar)
 
-
+        // 🔐 PASSWORD TOGGLE
         togglePassword.setOnClickListener {
             passwordVisible = !passwordVisible
 
             if (passwordVisible) {
-                passwordEt.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                passwordEt.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                togglePassword.setImageResource(R.drawable.ic_eye_off)
             } else {
                 passwordEt.inputType =
                     InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                togglePassword.setImageResource(R.drawable.ic_eye)
             }
 
             passwordEt.setSelection(passwordEt.text.length)
         }
 
+        // 🔐 CONFIRM PASSWORD TOGGLE
+        toggleConfirmPassword.setOnClickListener {
+            confirmPasswordVisible = !confirmPasswordVisible
 
+            if (confirmPasswordVisible) {
+                confirmPasswordEt.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                toggleConfirmPassword.setImageResource(R.drawable.ic_eye_off)
+            } else {
+                confirmPasswordEt.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                toggleConfirmPassword.setImageResource(R.drawable.ic_eye)
+            }
+
+            confirmPasswordEt.setSelection(confirmPasswordEt.text.length)
+        }
+
+        // 🚀 SIGNUP LOGIC
         signupBtn.setOnClickListener {
 
             val email = emailEt.text.toString().trim()
             val password = passwordEt.text.toString().trim()
             val confirmPassword = confirmPasswordEt.text.toString().trim()
 
+            // Validation
             if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -66,15 +91,21 @@ class Signup : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            loadingBar.visibility = View.VISIBLE
 
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
+                    loadingBar.visibility = View.GONE
+
                     if (task.isSuccessful) {
+                        Toast.makeText(
+                            this,
+                            "Account Created Successfully!",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                        Toast.makeText(this, "Account Created Successfully!", Toast.LENGTH_SHORT).show()
-
-
-                        startActivity(Intent(this, LoginActivity::class.java))
+                        // Move directly to Dashboard
+                        startActivity(Intent(this, DashBoardActivity::class.java))
                         finish()
 
                     } else {
@@ -87,7 +118,7 @@ class Signup : AppCompatActivity() {
                 }
         }
 
-
+        // 🔙 Back to Login
         loginText.setOnClickListener {
             finish()
         }

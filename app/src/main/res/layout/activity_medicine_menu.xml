@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_3">
+
+    <!-- MAIN CONTENT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_above="@id/viewCartBtn">
+
+        <!-- Pharmacy Title -->
+        <TextView
+            android:id="@+id/pharmacyTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pharmacy Name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"/>
+
+        <!-- Heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Available Medicines"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMedicine"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <!-- 🔥 VIEW CART BUTTON -->
+    <Button
+        android:id="@+id/viewCartBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="View Cart 🛒"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:backgroundTint="#4CAF50"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -1,15 +1,7 @@
 plugins {
-    id("com.android.application")
-
-    id("com.google.gms.google-services")
-
-
-
-
-
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.google.services)
 }
-
-
 
 android {
     namespace = "com.example.localmarket"
@@ -18,7 +10,8 @@ android {
     defaultConfig {
         applicationId = "com.example.localmarket"
         minSdk = 24
-        targetSdk = 35
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -34,6 +27,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -41,20 +35,38 @@ android {
 }
 
 dependencies {
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database)
+    implementation(libs.play.services.auth)
+    implementation(libs.text.recognition)
+    implementation(libs.glide)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("com.google.firebase:firebase-database:20.3.0")
 
-    implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
-    implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.android.gms:play-services-auth:21.3.0")
+
 }

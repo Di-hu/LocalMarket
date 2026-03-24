@@ -19,9 +19,10 @@ class splash : AppCompatActivity() {
         val appName = findViewById<TextView>(R.id.appName)
 
 
-        logo.scaleX = 0.6f
-        logo.scaleY = 0.6f
+        logo.scaleX = 0.7f
+        logo.scaleY = 0.7f
         logo.alpha = 0f
+
 
         logo.animate()
             .scaleX(1f)
@@ -36,7 +37,7 @@ class splash : AppCompatActivity() {
         appName.animate()
             .alpha(1f)
             .setDuration(1000)
-            .setStartDelay(600)
+            .setStartDelay(700)
             .start()
 
 
@@ -44,6 +45,6 @@ class splash : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
-        }, 5000)
+        }, 3000)
     }
 }
